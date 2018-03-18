@@ -7,7 +7,9 @@ import ClassB from '../ClassB/ClassB'
 class ClassAContainer extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      test: 'test'
+    }
   }
 
   async componentDidMount() {

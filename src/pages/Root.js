@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, withRouter, Link } from 'react-router-dom'
@@ -31,16 +33,19 @@ class Root extends Component {
 
   render() {
     const { visible } = this.state
-    const { HOME, DEMO_A, DEMO_B } = menu
+    const { HOME, DEMO_A, DEMO_B, STATE_MANAGER } = menu
 
     return (
       <div style={{ height: '800px' }} >
-        <Grid columns={5} stackable>
-          <Grid.Column>
+        <Grid columns={2}>
+          <Grid.Column width={3} floated="left">
             <Button onClick={this.toggleVisibility}>Toggle Menu</Button>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={10} textAlign="center">
             <Header as="h1" content="React Playground" style={style.h1} textAlign="center" />
+          </Grid.Column>
+          <Grid.Column width={3} floated="right">
+            <Button onClick={this.toggleVisibility}>Toggle Menu</Button>
           </Grid.Column>
         </Grid>
 
@@ -61,10 +66,13 @@ class Root extends Component {
                   <Link to={'/'}>{HOME}</Link>
                 </Menu.Item>
                 <Menu.Item name={DEMO_A}>
-                  <Link to={'/demoA'}>{DEMO_A}</Link>
+                  <Link to={'/demo-a'}>{DEMO_A}</Link>
                 </Menu.Item>
                 <Menu.Item name={DEMO_B}>
-                  <Link to={'/demoB'}>{DEMO_B}</Link>
+                  <Link to={'/demo-b'}>{DEMO_B}</Link>
+                </Menu.Item>
+                <Menu.Item name={STATE_MANAGER}>
+                  <Link to={'/state-manager'}>{STATE_MANAGER}</Link>
                 </Menu.Item>
               </Menu.Menu>
             </Menu.Item>
@@ -79,6 +87,7 @@ class Root extends Component {
               </Switch>
             </Segment>
           </Sidebar.Pusher>
+
         </Sidebar.Pushable>
       </div>
     )

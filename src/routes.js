@@ -4,8 +4,9 @@ import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { menu } from './constants'
 
-import DemoA from './components/DemoA'
-import DemoB from './components/DemoB'
+import DemoA from './pages/DemoA'
+import DemoB from './pages/DemoB'
+import StateManager from './pages/StateManager'
 
 const routes = [
   {
@@ -19,22 +20,31 @@ const routes = [
     main: () => (<div>Main</div>)
   },
   {
-    path: '/demoA',
+    path: '/demo-a',
     sidebar: () => (
       <Menu.Item name={menu.DEMO_A}>
-        <Link to={'/demoA'}>{menu.DEMO_A}</Link>
+        <Link to={'/demo-a'}>{menu.DEMO_A}</Link>
       </Menu.Item>
     ),
     main: DemoA
   },
   {
-    path: '/demoB',
+    path: '/demo-b',
     sidebar: () => (
       <Menu.Item name={menu.DEMO_B}>
-        <Link to={'/demoB'}>{menu.DEMO_B}</Link>
+        <Link to={'/demo-b'}>{menu.DEMO_B}</Link>
       </Menu.Item>
     ),
     main: DemoB
+  },
+  {
+    path: '/state-manager',
+    sidebar: () => (
+      <Menu.Item name={menu.DEMO_B}>
+        <Link to={'/state-manager'}>{menu.STATE_MANAGER}</Link>
+      </Menu.Item>
+    ),
+    main: StateManager
   }
 ]
 

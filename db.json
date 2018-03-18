@@ -1,0 +1,80 @@
+{
+  "deals": [
+    {
+      "id": 1,
+      "name": "deal 1",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 2,
+      "name": "deal 2",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 3,
+      "name": "deal 3",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 4,
+      "name": "deal 4",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 5,
+      "name": "deal 5",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 6,
+      "name": "deal 6",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 7,
+      "name": "deal 7",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 8,
+      "name": "deal 8",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 9,
+      "name": "deal 9",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 10,
+      "name": "deal 10",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 11,
+      "name": "deal 11",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    },
+    {
+      "id": 12,
+      "name": "deal 12",
+      "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+    }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

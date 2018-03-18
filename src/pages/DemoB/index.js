@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import { Grid, Header, Segment } from 'semantic-ui-react'
-import ContainerA from './ClassA'
-import ContainerC from './ClassC'
+import ContainerA from './components/ClassA'
+import ContainerC from './components/ClassC'
 
 const style = {
   h1: {
@@ -10,7 +10,7 @@ const style = {
   },
 }
 
-class DemoA extends Component {
+class DemoB extends Component {
   constructor() {
     super()
     this.state = {
@@ -22,13 +22,13 @@ class DemoA extends Component {
   }
 
   async componentDidMount() {
-    console.log('Demo A::componentDidMount')
+    console.log('Demo B::componentDidMount')
   }
 
   render() {
     return (
       <Segment>
-        <Header as="h1" content="Demo A" style={style.h1} textAlign="center" />
+        <Header as="h1" content="Demo B" style={style.h1} textAlign="center" />
         <Grid columns={2}>
           <Grid.Column>
             <ContainerA user={this.state.user} />
@@ -42,4 +42,4 @@ class DemoA extends Component {
   }
 }
 
-export default DemoA
+export default DemoB
