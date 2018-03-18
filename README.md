@@ -7,6 +7,9 @@ npm install
 npm start
 npm test
 
+To start json server:
+json-server --watch db.json
+
 ### Build
 
 Bundle your app. It will create `index.html`, `main.[hash].js`, `vendor.[hash].js` and `manifest.[hash].js`
@@ -14,7 +17,7 @@ Bundle your app. It will create `index.html`, `main.[hash].js`, `vendor.[hash].j
 npm build
 ```
 
-### Run your build
+### Run your production
 ```
 npm prod
 ```

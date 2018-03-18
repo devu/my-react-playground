@@ -21,10 +21,6 @@ class DemoA extends Component {
     }
   }
 
-  async componentDidMount() {
-    console.log('Demo A::componentDidMount')
-  }
-
   render() {
     return (
       <Segment>
