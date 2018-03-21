@@ -13,6 +13,7 @@ class Emitter {
     this.components = {}
     this.controlers = {}
     this.services = {}
+    this.signal = new Signal(this.uid)
   }
 
   registerComponent = c => {
@@ -91,6 +92,10 @@ class Emitter {
   broadcast = (channel, type, signal) => {
     if (!channel[type]) return
     channel[type].brc(signal)
+  }
+
+  emit = type => {
+    this.broadcast(this.channelC, type, this.signal)
   }
 
   getUID = () => (this._uid += 1)

@@ -4,43 +4,46 @@ import Emitter from './Emitter'
 
 class BixBite {
   constructor() {
+    this.defaultCore = ''
     this.cores = {}
-    this.spawnCore = this.spawnCore.bind(this)
   }
 
-  spawnCore = coreId => {
-    const c = new Emitter(coreId)
-    this.cores[coreId] = c
-    return c
+  spawnCore = (id, isDefault) => {
+    if (isDefault) this.defaultCore = id
+    return this.cores[id] = new Emitter(id)
   }
 
-  destroyCore = coreId => {
-    if (this.cores[coreId]) {
+  destroyCore = id => {
+    if (this.get(id)) {
       this.cores[id].destroy()
       this.cores[id] = null
       delete this.cores[id]
     }
   }
 
-  registerControler = (id, controler) => {
-    if (!this.cores[id]) noEmmiter(id)
-    return this.cores[id].registerControler(controler)
+  registerControler = (controler, id) => this.get(id).registerControler(controler)
+
+  registerDataService = (service, id) => {
+    this.get(id).registerDataService(service)
   }
 
-  registerDataService = (id, service) => {
-    if (!this.cores[id]) noEmmiter(id)
-    return this.cores[id].registerDataService(service)
+  connect = (component, id) => {
+    console.log('BixBite::connect', component)
+    this.get(id).registerComponent(component)
   }
 
-  connect = (id, component) => {
-    if (!this.cores[id]) noEmmiter(id)
-    return this.cores[id].registerComponent(component)
+  sendSignal = (type, id) => {
+    console.log('BixBite::sendSignal', type)
+    this.get(id).emit(type)
   }
 
-  noEmmiter = id => {
-    throw new Error(`There is no emitter with id ${id}`)
+  get = id => {
+    const sid = id || this.defaultCore
+    if (!this.cores[sid]) {
+      throw new Error(`There is no emitter with id ${sid}`)
+    }
+    return this.cores[sid]
   }
-
 }
 
 const bixbite = new BixBite()

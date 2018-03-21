@@ -23,17 +23,13 @@ class Root extends Component {
     }
   }
 
-  async componentDidMount() {
-    console.log('Root::componentDidMount')
-  }
-
   toggleVisibility = () => {
     this.setState({ visible: !this.state.visible })
   }
 
   render() {
     const { visible } = this.state
-    const { HOME, DEMO_A, DEMO_B, STATE_MANAGER } = menu
+    const { HOME, DEMO_A, DEMO_B, STATE_MANAGER, ALPACA } = menu
 
     return (
       <div style={{ height: '800px' }} >
@@ -73,6 +69,12 @@ class Root extends Component {
                 </Menu.Item>
                 <Menu.Item name={STATE_MANAGER}>
                   <Link to={'/state-manager'}>{STATE_MANAGER}</Link>
+                </Menu.Item>
+              </Menu.Menu>
+              <Menu.Header>Apps</Menu.Header>
+              <Menu.Menu>
+                <Menu.Item name={ALPACA}>
+                  <Link to={'/alpaca'}>{ALPACA}</Link>
                 </Menu.Item>
               </Menu.Menu>
             </Menu.Item>

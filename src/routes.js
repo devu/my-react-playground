@@ -7,6 +7,7 @@ import { menu } from './constants'
 import DemoA from './pages/DemoA'
 import DemoB from './pages/DemoB'
 import StateManager from './pages/StateManager'
+import Alpaca from './pages/Alpaca'
 
 const routes = [
   {
@@ -45,6 +46,15 @@ const routes = [
       </Menu.Item>
     ),
     main: StateManager
+  },
+  {
+    path: '/alpaca',
+    sidebar: () => (
+      <Menu.Item name={menu.ALPACA}>
+        <Link to={'/alpaca'}>{menu.ALPACA}</Link>
+      </Menu.Item>
+    ),
+    main: Alpaca
   }
 ]
 

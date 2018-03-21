@@ -4,7 +4,7 @@ import React from 'react'
 import { Button, Grid, Segment } from 'semantic-ui-react'
 
 import BixBite from '../../../../api'
-import { signals, cores } from '../../constants'
+import { COLOR_UPDATED, TEXT_UPDATED, UPDATE_TEXT } from '../../constants'
 
 class ContainerB extends React.Component {
   constructor() {
@@ -14,10 +14,7 @@ class ContainerB extends React.Component {
       text: 'ContainerB'
     }
 
-    const { COLOR_UPDATED, TEXT_UPDATED } = signals
-    const { DEFAULT } = cores
-
-    BixBite.connect(DEFAULT, this)
+    BixBite.connect(this)
     this.addSlot(TEXT_UPDATED, this.onTextUpdate)
     this.addSlot(COLOR_UPDATED, this.onColorUpdate)
   }
@@ -31,7 +28,7 @@ class ContainerB extends React.Component {
   }
 
   updateText = () => {
-    this.sendSignal(signals.UPDATE_TEXT)
+    this.sendSignal(UPDATE_TEXT)
   }
 
   render() {

@@ -4,11 +4,12 @@ import { Container } from 'semantic-ui-react'
 import BixBite from '../../api'
 import ContainerA from './components/ContainerA'
 import ContainerB from './components/ContainerB'
-import ContainerC from './components/ContainerC'
-import ContainerE from './components/ContainerE'
-import { cores } from './constants'
+// import ContainerC from './components/ContainerC'
+// import ContainerD from './components/ContainerD'
+import { DEFAULT_CORE } from './constants'
 
-import DefaultControler from './controlers/DefaultControler'
+import ColorControler from './controlers/ColorControler'
+import TextControler from './controlers/TextControler'
 import DealsControler from './controlers/DealsControler'
 import DealsDataService from './data/DealsDataService'
 
@@ -16,12 +17,12 @@ class StateManager extends Component {
   constructor() {
     super()
 
-    const { DEFAULT } = cores
-    BixBite.spawnCore(DEFAULT)
-    BixBite.registerDataService(DEFAULT, DealsDataService)
+    BixBite.spawnCore(DEFAULT_CORE, true)
+    BixBite.registerDataService(DealsDataService)
 
-    BixBite.registerControler(DEFAULT, DefaultControler)
-    BixBite.registerControler(DEFAULT, DealsControler)
+    BixBite.registerControler(ColorControler)
+    BixBite.registerControler(TextControler)
+    BixBite.registerControler(DealsControler)
   }
 
   render() {
@@ -29,8 +30,6 @@ class StateManager extends Component {
       <Container>
         <ContainerA />
         <ContainerB />
-        <ContainerC />
-        <ContainerE />
       </Container>
     )
   }

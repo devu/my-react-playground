@@ -4,9 +4,9 @@ import React from 'react'
 import { Segment, Grid, Input, Divider } from 'semantic-ui-react'
 
 import BixBite from '../../../../api'
-import { signals, cores } from '../../constants'
+import { ON_DEALS_DATA, ON_DEAL_DATA, GET_DEAL_BY_ID } from '../../constants'
 
-class ContainerE extends React.Component {
+class ContainerD extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -15,9 +15,9 @@ class ContainerE extends React.Component {
       dealId: 1
     }
 
-    BixBite.connect(cores.DEFAULT, this)
-    this.addSlot(signals.ON_DEALS_DATA, this.onServiceReady)
-    this.addSlot(signals.ON_DEAL_DATA, this.onDealData)
+    BixBite.connect(this)
+    this.addSlot(ON_DEALS_DATA, this.onServiceReady)
+    this.addSlot(ON_DEAL_DATA, this.onDealData)
   }
 
   onServiceReady() {
@@ -35,7 +35,7 @@ class ContainerE extends React.Component {
   }
 
   getDeal = id => {
-    this.sendSignal(signals.GET_DEAL_BY_ID, { id })
+    this.sendSignal(GET_DEAL_BY_ID, { id })
   }
 
   render() {
@@ -79,4 +79,4 @@ class ContainerE extends React.Component {
   }
 }
 
-export default ContainerE
+export default ContainerD
