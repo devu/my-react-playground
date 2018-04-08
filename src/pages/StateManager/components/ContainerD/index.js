@@ -16,8 +16,8 @@ class ContainerD extends React.Component {
     }
 
     BixBite.connect(this)
-    this.addSlot(ON_DEALS_DATA, this.onServiceReady)
-    this.addSlot(ON_DEAL_DATA, this.onDealData)
+    this.on(ON_DEALS_DATA, this.onServiceReady)
+    this.on(ON_DEAL_DATA, this.onDealData)
   }
 
   onServiceReady() {
@@ -35,7 +35,7 @@ class ContainerD extends React.Component {
   }
 
   getDeal = id => {
-    this.sendSignal(GET_DEAL_BY_ID, { id })
+    this.send(GET_DEAL_BY_ID, { id })
   }
 
   render() {

@@ -23,17 +23,23 @@ class BixBite {
 
   registerControler = (controler, id) => this.get(id).registerControler(controler)
 
-  registerDataService = (service, id) => {
-    this.get(id).registerDataService(service)
+  registerControlers = (controlers, id) => {
+    controlers.forEach(controler => this.registerControler(controler, id))
+  }
+
+  registerService = (service, id) => {
+    this.get(id).registerService(service)
+  }
+
+  registerServices = (services, id) => {
+    services.forEach(service => this.registerControler(service, id))
   }
 
   connect = (component, id) => {
-    console.log('BixBite::connect', component)
     this.get(id).registerComponent(component)
   }
 
-  sendSignal = (type, id) => {
-    console.log('BixBite::sendSignal', type)
+  send = (type, id) => {
     this.get(id).emit(type)
   }
 

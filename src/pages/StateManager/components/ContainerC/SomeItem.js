@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 
 import BixBite from '../../../../api'
-import { COLOR_UPDATED } from '../../constants'
+import { UPDATE_COLOR } from '../../constants'
 
 class SomeItem extends React.Component {
   constructor() {
@@ -15,7 +15,7 @@ class SomeItem extends React.Component {
     }
 
     BixBite.connect(this)
-    this.addSlot(COLOR_UPDATED, this.onColorUpdate)
+    this.on(UPDATE_COLOR, this.onColorUpdate)
   }
 
   onColorUpdate = ({ color }) => {

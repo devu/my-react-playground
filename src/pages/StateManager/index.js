@@ -8,21 +8,17 @@ import ContainerB from './components/ContainerB'
 // import ContainerD from './components/ContainerD'
 import { DEFAULT_CORE } from './constants'
 
-import ColorControler from './controlers/ColorControler'
-import TextControler from './controlers/TextControler'
-import DealsControler from './controlers/DealsControler'
 import DealsDataService from './data/DealsDataService'
+import Controlers from './controlers'
 
 class StateManager extends Component {
   constructor() {
     super()
 
     BixBite.spawnCore(DEFAULT_CORE, true)
-    BixBite.registerDataService(DealsDataService)
 
-    BixBite.registerControler(ColorControler)
-    BixBite.registerControler(TextControler)
-    BixBite.registerControler(DealsControler)
+    BixBite.registerService(DealsDataService)
+    BixBite.registerControlers(Controlers)
   }
 
   render() {

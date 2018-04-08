@@ -1,4 +1,4 @@
-import { UPDATE_TEXT, TEXT_UPDATED } from '../constants'
+import { UPDATE_TEXT } from '../constants'
 
 class TextControler {
   constructor() {
@@ -6,13 +6,13 @@ class TextControler {
   }
 
   init() {
-    this.addSlot(UPDATE_TEXT, this.onTextUpdate)
+    this.on(UPDATE_TEXT, this.onTextUpdate)
   }
 
   onTextUpdate = () => {
     const word = this.getRandom(this.words)
     const extraWord = this.getRandom(this.words)
-    this.sendSignal(TEXT_UPDATED, { text: word, extraWord })
+    this.send(UPDATE_TEXT, { text: word, extraWord })
   }
 
   getRandom = array => {

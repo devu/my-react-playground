@@ -1,4 +1,4 @@
-import { UPDATE_COLOR, COLOR_UPDATED } from '../constants'
+import { UPDATE_COLOR } from '../constants'
 
 class ColorControler {
   constructor() {
@@ -6,12 +6,12 @@ class ColorControler {
   }
 
   init() {
-    this.addSlot(UPDATE_COLOR, this.onColorUpdate)
+    this.on(UPDATE_COLOR, this.onColorUpdate)
   }
 
   onColorUpdate = () => {
     const color = this.getRandom(this.colors)
-    this.sendSignal(COLOR_UPDATED, { color })
+    this.send(UPDATE_COLOR, { color })
   }
 
   getRandom = array => {

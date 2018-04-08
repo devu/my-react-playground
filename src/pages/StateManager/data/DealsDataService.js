@@ -7,14 +7,14 @@ class DealsDataService {
   }
 
   init() {
-    this.addSlot(DEALS_DATA_REQUEST, this.onDataRequest)
+    this.on(DEALS_DATA_REQUEST, this.onDataRequest)
   }
 
   onDataRequest = async () => {
     const data = this.deals
       ? this.deals
       : await fetch('http://localhost:3000/deals').then(res => this.deals = res.json())
-    this.response(DEALS_DATA_RESPONSE, data)
+    this.respond(DEALS_DATA_RESPONSE, data)
   }
 }
 

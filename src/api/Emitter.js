@@ -1,4 +1,4 @@
-/* eslint no-return-assign: 0, no-param-reassign: 0 */
+/* eslint no-return-assign: 0, no-param-reassign: 0, no-undef: 0 */
 
 import Signal from './Signal'
 import Slots from './Slots'
@@ -19,31 +19,34 @@ class Emitter {
   registerComponent = c => {
     c.uid = `@${this.getUID()}::${this.coreID}`
     c.signal = new Signal(this.uid)
-    c.addSlot = (type, cb) => this.addSlot(this.channelV, c.uid, type, cb, c)
-    c.sendSignal = (type, signal) => this.broadcast(this.channelC, type, signal)
+    c.on = (type, cb) => this.addSlot(this.channelV, c.uid, type, cb, c)
+    c.send = (type, signal) => this.broadcast(this.channelC, type, signal)
   }
 
   registerControler = C => {
     const uid = `@${this.getUID()}::${this.coreID}`
-    this.controlers[uid] = new C()
-    this.controlers[uid].uid = uid
-    this.controlers[uid].signal = new Signal(uid)
-    this.controlers[uid].addSlot = (type, cb) => this.addSlot(this.channelC, uid, type, cb, C)
-    this.controlers[uid].sendSignal = (type, signal) => this.broadcast(this.channelV, type, signal)
-    this.controlers[uid].request = (type, signal) => this.broadcast(this.channelD, type, signal)
-    this.controlers[uid].init()
-    return this.controlers[uid]
+    const controler = new C()
+    controler.uid = uid
+    controler.signal = new Signal(uid)
+    controler.on = (type, cb) => this.addSlot(this.channelC, uid, type, cb, C)
+    controler.send = (type, signal) => this.broadcast(this.channelV, type, signal)
+    controler.request = (type, signal) => this.broadcast(this.channelD, type, signal)
+    controler.emit = (type, signal) => this.broadcast(this.channelC, type, signal)
+    controler.init()
+    this.controlers[uid] = controler
+    return controler
   }
 
-  registerDataService = D => {
+  registerService = S => {
     const uid = `@${this.getUID()}::${this.coreID}`
-    this.services[uid] = new D()
-    this.services[uid].uid = uid
-    this.services[uid].signal = new Signal(uid)
-    this.services[uid].addSlot = (type, cb) => this.addSlot(this.channelD, uid, type, cb, D)
-    this.services[uid].response = (type, signal) => this.broadcast(this.channelC, type, signal)
-    this.services[uid].init()
-    return this.services[uid]
+    const service = new S()
+    service.uid = uid
+    service.signal = new Signal(uid)
+    service.on = (type, cb) => this.addSlot(this.channelD, uid, type, cb, S)
+    service.respond = (type, signal) => this.broadcast(this.channelC, type, signal)
+    service.init()
+    this.services[uid] = service
+    return service
   }
 
   /**

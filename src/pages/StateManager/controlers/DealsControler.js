@@ -13,26 +13,26 @@ class DealsControler {
   }
 
   init() {
-    this.addSlot(GET_DEAL_BY_ID, this.getDealById)
-    this.addSlot(GET_DEAL_BY_NAME, this.getDealByName)
-    this.addSlot(DEALS_DATA_RESPONSE, this.onDealsData)
+    this.on(GET_DEAL_BY_ID, this.getDealById)
+    this.on(GET_DEAL_BY_NAME, this.getDealByName)
+    this.on(DEALS_DATA_RESPONSE, this.onDealsData)
 
     this.request(DEALS_DATA_REQUEST)
   }
 
   onDealsData = deals => {
     this.deals = deals
-    this.sendSignal(ON_DEALS_DATA)
+    this.send(ON_DEALS_DATA)
   }
 
   getDealById = ({ id }) => {
     const deal = this.deals.find(d => d.id === id)
-    this.sendSignal(ON_DEAL_DATA, deal)
+    this.send(ON_DEAL_DATA, deal)
   }
 
   getDealByName = ({ name }) => {
     const deal = this.deals.find(d => d.name === name)
-    this.sendSignal(ON_DEAL_DATA, deal)
+    this.send(ON_DEAL_DATA, deal)
   }
 }
 
